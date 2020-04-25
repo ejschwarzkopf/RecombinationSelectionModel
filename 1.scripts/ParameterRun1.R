@@ -127,7 +127,7 @@ random_vector<-rep(c(TRUE, FALSE), 67200)
 ##### at the same time.                  #####
 ##############################################
 
-runs_output<-mapply(FUN = LDmodelrun, s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector)
+runs_output<-mapply(FUN = LDmodelrun, s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector, MoreArgs = list(time=time))
 
 ##############################################
 ##### We place all parameters and output #####
