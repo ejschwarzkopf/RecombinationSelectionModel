@@ -85,9 +85,9 @@ Dsim<-function(s1, s2, r = 1e-8){
 ##### The LDmodelrun function takes      #####
 ##### vectors of parameters and runs the #####
 ##### s.coef2 and Dsim functions on them #####
-##### to obtain values of allele and     #####
-##### haplotype frequencies and values   #####
-##### LD over generational time.         #####
+##### and outputs the time until LD was  #####
+##### below 0.0001 for each set of       #####
+##### parameters.                        #####
 ##############################################
 
 
@@ -100,7 +100,8 @@ LDmodelrun<-function(time, s.max1, s.max2, period1, period2, phase.shift1, phase
     s2$s.t=sample(x=s2$s.t, size = length(s2$s.t), replace = FALSE)
   }
   D1<-Dsim(s1=s1$s.t, s2=s2$s.t, r = r)
-  return(D1)
+  y<-length(D1$D)
+  return(y)
 }
 
 ##############################################
@@ -128,4 +129,16 @@ random_vector<-rep(c(TRUE, FALSE), 67200)
 
 runs_output<-mapply(FUN = LDmodelrun, s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector)
 
+##############################################
+##### We place all parameters and output #####
+##### into a single table for exporting  #####
+##### to a file.                         #####
+##############################################
 
+runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector, LDdecay=runs_output)
+
+##############################################
+##### We export the table to a file.     #####
+##############################################
+
+write.table(runs_table, "2.math_model_results/ParameterRun1_Output.txt", quote=FALSE)
