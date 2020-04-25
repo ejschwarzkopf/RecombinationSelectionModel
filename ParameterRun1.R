@@ -141,4 +141,4 @@ runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=perio
 ##### We export the table to a file.     #####
 ##############################################
 
-write.table(runs_output, "")
+write.table(runs_table, "2.math_model_results/ParameterRun1_Output.txt", quote=FALSE)
