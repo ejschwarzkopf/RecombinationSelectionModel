@@ -73,7 +73,11 @@ Dsim<-function(s1, s2, r = 1e-8){
     pAb=c(pAb, p_Ab)
     paB=c(paB, p_aB)
     pab=c(pab, p_ab)
-    if(D1<0.0001){
+    if(exists("D1") & !is.na(D1)){
+      if(D1<0.0001){
+        break
+      }
+    }else{
       break
     }
   }

@@ -1,0 +1,3 @@
+Error in if (D1 < 1e-04) { : missing value where TRUE/FALSE needed
+Calls: mapply -> <Anonymous> -> Dsim
+Execution halted
