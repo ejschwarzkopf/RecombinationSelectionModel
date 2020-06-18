@@ -12,4 +12,4 @@ i=${SLURM_ARRAY_TASK_ID}
 
 module load r/3.6.3
 
-Rscript --vanilla 1.scripts/ParameterRun1.R ${i} 3.aux/Parameters_run1.txt
+Rscript --vanilla 1.scripts/ParameterRun1_array.R ${i} 3.aux/Parameters_run1.txt
