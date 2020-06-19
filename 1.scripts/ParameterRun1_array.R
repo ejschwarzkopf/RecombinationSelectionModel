@@ -17,6 +17,8 @@ if(length(args)<=1){
   stop("Missing arguments")
 }
 
+is.numeric(args[2])
+
 parameter_table<-read.table(args[1])
 rows=c(args[2]:(args[2]+9))
 
