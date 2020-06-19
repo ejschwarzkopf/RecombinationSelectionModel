@@ -15,10 +15,6 @@ args = commandArgs(trailingOnly=TRUE)
 
 if(length(args)<=1){
   stop("Missing arguments")
-} else if(!args[2]){
-  stop("Row number indicatorn cannot be zero")
-} else if(!is.character(args[1])){
-  stop("Valid filename required")
 }
 
 parameter_table<-read.table(args[1])

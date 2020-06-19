@@ -78,6 +78,7 @@ Dsim<-function(s1, s2, r = 1e-8){
         break
       }
     }else{
+      D1=1
       break
     }
   }
@@ -104,7 +105,7 @@ LDmodelrun<-function(time, s.max1, s.max2, period1, period2, phase.shift1, phase
     s2$s.t=sample(x=s2$s.t, size = length(s2$s.t), replace = FALSE)
   }
   D1<-Dsim(s1=s1$s.t, s2=s2$s.t, r = r)
-  y<-length(D1$D)
+  y<-c(length(D1$D), tail(D1$D, 1))
   return(y)
 }
 
@@ -139,7 +140,7 @@ runs_output<-mapply(FUN = LDmodelrun, s.max1=s.max1_vector, s.max2=s.max2_vector
 ##### to a file.                         #####
 ##############################################
 
-runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector, LDdecay=runs_output)
+runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector, LDdecay=runs_output[,1], LDvalue=runs_output[,2])
 
 ##############################################
 ##### We export the table to a file.     #####
