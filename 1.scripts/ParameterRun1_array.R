@@ -19,8 +19,11 @@ if(length(args)<=1){
 
 args2<-as.numeric(args[2])
 
+start=((args2-1)*10)+1
+end=start+9
+
 parameter_table<-read.table(args[1])
-rows=c(args2:(args2+9))
+rows=c(start:end)
 
 ##############################################
 ##### Function that takes points in a    #####
@@ -116,7 +119,7 @@ LDmodelrun<-function(time, s.max1, s.max2, period1, period2, phase.shift1, phase
     s2$s.t=sample(x=s2$s.t, size = length(s2$s.t), replace = FALSE)
   }
   D1<-Dsim(s1=s1$s.t, s2=s2$s.t, r = r)
-  y<-length(D1$D)
+  y<-c(length(D1$D), tail(D1$D,1))
   return(y)
 }
 
@@ -167,7 +170,7 @@ runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=perio
 ##### We export the table to a file.     #####
 ##############################################
 
-outfile<-paste("2.math_model_results/ParameterRun1_Output_", args2, "-", args2+9, ".txt", sep = '')
+outfile<-paste("2.math_model_results/1.parameter_run_1/ParameterRun1_Output_", start, "-", end, ".txt", sep = '')
 
 
 write.table(runs_table, outfile, quote=FALSE)
