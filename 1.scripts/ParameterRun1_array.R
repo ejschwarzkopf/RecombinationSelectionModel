@@ -17,10 +17,10 @@ if(length(args)<=1){
   stop("Missing arguments")
 }
 
-is.numeric(args[2])
+arg2<-as.numeric(args[2])
 
 parameter_table<-read.table(args[1])
-rows=c(args[2]:(args[2]+9))
+rows=c(arg2:(arg2+9))
 
 ##############################################
 ##### Function that takes points in a    #####
