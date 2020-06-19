@@ -17,10 +17,10 @@ if(length(args)<=1){
   stop("Missing arguments")
 }
 
-arg2<-as.numeric(args[2])
+args2<-as.numeric(args[2])
 
 parameter_table<-read.table(args[1])
-rows=c(arg2:(arg2+9))
+rows=c(args2:(args2+9))
 
 ##############################################
 ##### Function that takes points in a    #####
@@ -167,7 +167,7 @@ runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=perio
 ##### We export the table to a file.     #####
 ##############################################
 
-outfile<-paste("2.math_model_results/ParameterRun1_Output_", args[2], "-", args[2]+9, ".txt", sep = '')
+outfile<-paste("2.math_model_results/ParameterRun1_Output_", args2, "-", args2+9, ".txt", sep = '')
 
 
 write.table(runs_table, outfile, quote=FALSE)
