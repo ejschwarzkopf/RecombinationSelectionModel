@@ -6,9 +6,11 @@
 #SBATCH --time=7-00:00:00
 #SBATCH --nodes=1
 #SBATCH --workdir="/data/cornejo/projects/e.jimenezschwarzkop/LDModel"
-#SBATCH --array=1-13440:1# Number of jobs, in steps of 1
+#SBATCH --array=1-5757:1# Number of jobs (total was 13440), in steps of 1
 
-i=${SLURM_ARRAY_TASK_ID}
+k=${SLURM_ARRAY_TASK_ID}
+
+i=$(awk 'NR=='$k' {print}' 3.aux/leftovers.txt)
 
 module load r/3.6.3
 
