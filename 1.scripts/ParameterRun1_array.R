@@ -169,7 +169,7 @@ runs_output<-mapply(FUN = LDmodelrun, s.max1=s.max1_vector, s.max2=s.max2_vector
 ##### to a file.                         #####
 ##############################################
 
-runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector, LDdecay=runs_output)
+runs_table<-data.frame(s.max1=s.max1_vector, s.max2=s.max2_vector, period1=period1_vector, period2=period2_vector, phase.shift1=rep(0, length(phase.shift2_vector)), phase.shift2=phase.shift2_vector, r=r_vector, random=random_vector, LDdecay=runs_output[,1], LDvalue=runs_output[,2])
 
 ##############################################
 ##### We export the table to a file.     #####
